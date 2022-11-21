@@ -12,3 +12,11 @@ for (let i=0;i<array.length;i++){
     newArray.shift()
 }
 
+array.forEach(el => {
+    if(array.includes(el,0)){
+        console.log(el,".")
+    }else{
+        console.log("111")
+    }
+    array.shift()
+});
