@@ -17,7 +17,7 @@ sortedCards.forEach(element => {
     cardContent.textContent=element;
     card.classList.add("card");
     cardContent.classList.add("card-content");
-    cardContent.setAttribute("data-content", element)
+    cardContent.dataset.content=element
     $table.appendChild(card)
     card.appendChild(cardContent)
 });
