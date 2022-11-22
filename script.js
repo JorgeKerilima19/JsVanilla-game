@@ -3,8 +3,15 @@ const array1=["❤","😁","🌹","💖","😜",,"😉"]
 const array2=array1.concat(array1)
 
 const $table=document.querySelector("#table");
+function shufflingCards(){
+    let result= array2.sort(function(){
+        return 1 -Math.random();
+    });
+    return result;
+}
+const sortedCards=shufflingCards();
 $table.innerHTML=""
-array2.forEach(element => {
+sortedCards.forEach(element => {
     card=document.createElement("div");
     cardContent=document.createElement("div");
     cardContent.textContent=element;
@@ -21,7 +28,3 @@ $cardContent.forEach(el=>{
         el.classList.toggle("frontwards");
     });
 })
-
-function shufflingCards(){
-    let result= Math.floor(Math.random()*10) + 1;
-}
