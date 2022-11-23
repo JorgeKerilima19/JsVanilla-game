@@ -5,7 +5,7 @@ const array2=array1.concat(array1)
 const $table=document.querySelector("#table");
 function shufflingCards(){
     let result= array2.sort(function(){
-        return 1 -Math.random();
+        return 0.5 -Math.random();
     });
     return result;
 }
@@ -35,7 +35,7 @@ $cardContent.forEach(el=>{
             if (cardsToCompare[0].textContent===cardsToCompare[1].textContent){
                 console.log("NICE")
             }else{
-                console.log(12)
+                console.log("ERROR")
             }
         }
     });
