@@ -23,9 +23,11 @@ sortedCards.forEach(element => {
 });
 
 const $cardContent=document.querySelectorAll(".card");
+const $frontwardsCards=document.querySelectorAll(".frontwards")
 $cardContent.forEach(el=>{
     el.addEventListener("click",()=>{
         console.log("X");
         el.classList.toggle("frontwards");
+        console.log($frontwardsCards)
     });
 })
