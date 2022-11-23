@@ -23,11 +23,20 @@ sortedCards.forEach(element => {
 });
 
 const $cardContent=document.querySelectorAll(".card");
-const $frontwardsCards=document.querySelectorAll(".frontwards")
 $cardContent.forEach(el=>{
     el.addEventListener("click",()=>{
-        console.log("X");
+        const $frontwardsCards=document.querySelectorAll(".frontwards");
+        if($frontwardsCards.length>1){
+            return;
+        }
+        // let fc=document.querySelectorAll(".frontwards");
+        // if (fc.length<2){
+        //     return
+        // }
         el.classList.toggle("frontwards");
-        console.log($frontwardsCards)
+        const cardx=document.querySelector(".frontwards")
+        if (cardx.length>1){
+            console.log(cardx)
+        }
     });
-})
+});
