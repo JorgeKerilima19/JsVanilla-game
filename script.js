@@ -29,14 +29,14 @@ $cardContent.forEach(el=>{
         if($frontwardsCards.length>1){
             return;
         }
-        // let fc=document.querySelectorAll(".frontwards");
-        // if (fc.length<2){
-        //     return
-        // }
         el.classList.toggle("frontwards");
-        const cardx=document.querySelector(".frontwards")
-        if (cardx.length>1){
-            console.log(cardx)
+        const cardsToCompare=document.querySelectorAll(".frontwards")
+        if (cardsToCompare.length>1){
+            if (cardsToCompare[0].textContent===cardsToCompare[1].textContent){
+                console.log("NICE")
+            }else{
+                console.log(12)
+            }
         }
     });
 });
