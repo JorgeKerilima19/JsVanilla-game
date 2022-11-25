@@ -1,4 +1,4 @@
-const array1=["❤","😁","🌹","💖","😜",,"😉"]
+const array1=["❤","😁","🌹","💖","😜","😃","😉"]
 
 const array2=array1.concat(array1)
 
@@ -13,11 +13,11 @@ const sortedCards=shufflingCards();
 $table.innerHTML=""
 sortedCards.forEach(element => {
     card=document.createElement("div");
+    card.dataset.content=element
     cardContent=document.createElement("div");
     cardContent.textContent=element;
     card.classList.add("card");
     cardContent.classList.add("card-content");
-    cardContent.dataset.content=element
     $table.appendChild(card)
     card.appendChild(cardContent)
 });
@@ -32,7 +32,7 @@ $cardContent.forEach(el=>{
         el.classList.toggle("frontwards");
         const cardsToCompare=document.querySelectorAll(".frontwards")
         if (cardsToCompare.length>1){
-            if (cardsToCompare[0].textContent===cardsToCompare[1].textContent){
+            if (cardsToCompare[0].dataset.content===cardsToCompare[1].dataset.content){
                 console.log("NICE")
             }else{
                 console.log("ERROR")
