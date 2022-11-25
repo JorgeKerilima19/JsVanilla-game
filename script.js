@@ -61,11 +61,11 @@ const $cards=document.querySelectorAll(".card");
 $cards.forEach(el =>{
     el.addEventListener("click",()=>{
         const $frontwardsCards=document.querySelectorAll(".frontwards");
-        const $cardsToCompare=document.querySelectorAll(".card.frontwards");
         if($frontwardsCards.length>1){
             return
         }
         newGame.choosingCards(el)
-        newGame.comparingCards($cardsToCompare[0],$cardsToCompare[1])
+        const $cardsToCompare=document.querySelectorAll(".card.frontwards");
+        newGame.comparingCards($cardsToCompare[0].dataset.content,$cardsToCompare[1].dataset.content)
     })
 });
