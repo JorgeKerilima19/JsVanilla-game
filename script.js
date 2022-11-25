@@ -61,6 +61,10 @@ sortedCards.forEach(element => {
 const $result=document.querySelector(".result h4");
 const newGame=new memoryCards(array2,$result);
 
+const resetButton=document.querySelector(".button");
+resetButton.addEventListener("click",()=>{
+    newGame.shufflingCards()
+})
 const $cards=document.querySelectorAll(".card");
 $cards.forEach(el =>{
     el.addEventListener("click",()=>{

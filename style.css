@@ -67,3 +67,10 @@
     align-items: center;
     justify-content: center;
 }
+.button{
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    width: 10rem;
+    height: 4rem;
+}
