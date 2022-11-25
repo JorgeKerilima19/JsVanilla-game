@@ -13,21 +13,25 @@ class memoryCards{
         card.classList.add("frontwards");
     }
     comparingCards(card1,card2){
-        if(card1===card2){
+        if(card1.dataset.content===card2.dataset.content){
             console.log(card1)
             console.log(card2)
-            this.rightPair()
+            this.rightPair(card1,card2)
         }else{
             console.log(card1)
             console.log(card2)
-            this.wrongGuess()
+            this.wrongGuess(card1,card2)
         }
     }
-    rightPair(){
+    rightPair(card1,card2){
+        card1.classList.add("right-pair");
+        card2.classList.add("right-pair");
         this.result.textContent="Nice!";
 
     }
-    wrongGuess(){
+    wrongGuess(card1,card2){
+        card1.classList.remove("frontwards");
+        card2.classList.remove("frontwards");
         this.result.textContent="You missed it !";
 
     }
@@ -60,12 +64,12 @@ const newGame=new memoryCards(array2,$result);
 const $cards=document.querySelectorAll(".card");
 $cards.forEach(el =>{
     el.addEventListener("click",()=>{
-        const $frontwardsCards=document.querySelectorAll(".frontwards");
+        const $frontwardsCards=document.querySelectorAll(".frontwards:not(.right-pair)");
         if($frontwardsCards.length>1){
             return
         }
         newGame.choosingCards(el)
-        const $cardsToCompare=document.querySelectorAll(".card.frontwards");
-        newGame.comparingCards($cardsToCompare[0].dataset.content,$cardsToCompare[1].dataset.content)
+        const $cardsToCompare=document.querySelectorAll(".card.frontwards:not(.right-pair)");
+        newGame.comparingCards($cardsToCompare[0],$cardsToCompare[1])
     })
 });
