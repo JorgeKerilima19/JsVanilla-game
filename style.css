@@ -12,7 +12,7 @@
 .table{
     position: relative;
     margin: auto 0;
-    height: 100vh;
+    height: 90vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -54,4 +54,14 @@
 }
 .card.frontwards>*{
     transform: rotateY(0deg);
+}
+
+.result{
+    margin: 0 auto;
+    height: 4rem;
+    width: 10rem;
+    border: thin solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

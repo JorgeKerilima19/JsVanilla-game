@@ -40,3 +40,7 @@ $cardContent.forEach(el=>{
         }
     });
 });
+
+results=document.createElement("fragment")
+
+document.body.appendChild(results)
