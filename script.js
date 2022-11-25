@@ -1,6 +1,5 @@
 class memoryCards{
-    constructor(arr,card,result){
-        this.card=card;
+    constructor(arr,result){
         this.arr=arr;
         this.result=result;
     }
@@ -11,26 +10,29 @@ class memoryCards{
         return result;
     }
     choosingCards(card){
-        card.classList.toggle("frontwards")
+        card.classList.add("frontwards");
     }
-    comparingCards(){
-        if (this.card1.dataset.content===this.card2.dataset.content){
+    comparingCards(card1,card2){
+        if(card1===card2){
+            console.log(card1)
+            console.log(card2)
             this.rightPair()
         }else{
+            console.log(card1)
+            console.log(card2)
             this.wrongGuess()
         }
     }
     rightPair(){
-        result.textContent="Nice!";
-        return
+        this.result.textContent="Nice!";
+
     }
     wrongGuess(){
-        result.textContent="You missed it !";
-        return
+        this.result.textContent="You missed it !";
+
     }
 }
 const array1=["❤","😁","🌹","💖","😜","😃","😉"]
-
 const array2=array1.concat(array1)
 
 const $table=document.querySelector("#table");
@@ -52,18 +54,18 @@ sortedCards.forEach(element => {
     $table.appendChild(card)
     card.appendChild(cardContent)
 });
-const cardsToCompare=document.querySelectorAll(".frontwards");
-const $frontwardsCards=document.querySelectorAll(".frontwards");
 const $result=document.querySelector(".result h4");
-
 const newGame=new memoryCards(array2,$result);
-
 
 const $cards=document.querySelectorAll(".card");
 $cards.forEach(el =>{
     el.addEventListener("click",()=>{
+        const $frontwardsCards=document.querySelectorAll(".frontwards");
+        const $cardsToCompare=document.querySelectorAll(".card.frontwards");
+        if($frontwardsCards.length>1){
+            return
+        }
         newGame.choosingCards(el)
+        newGame.comparingCards($cardsToCompare[0],$cardsToCompare[1])
     })
 });
-
-
