@@ -30,10 +30,18 @@ class memoryCards{
 
     }
     wrongGuess(card1,card2){
-        card1.classList.remove("frontwards");
-        card2.classList.remove("frontwards");
+        let Arr=[card1,card2]
+        Arr.forEach(el=>{
+            el.classList.add("error");
+        })
         this.result.textContent="You missed it !";
-
+        setTimeout(() => {
+            Arr.forEach(el=>{
+                el.classList.remove("error");
+                el.classList.remove("frontwards");
+            })
+            this.result.textContent="Try again";
+        }, 1000);
     }
 }
 const array1=["❤","😁","🌹","💖","😜","😃","😉"]
