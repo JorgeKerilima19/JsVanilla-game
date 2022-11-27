@@ -2,6 +2,22 @@ class memoryCards{
     constructor(arr,result){
         this.arr=arr;
         this.result=result;
+        this.moves=0;
+    }
+    startGame(){
+        const $cards=document.querySelectorAll(".card");
+        $cards.forEach(el =>{
+            el.addEventListener("click",()=>{
+                const $frontwardsCards=document.querySelectorAll(".frontwards:not(.right-pair)");
+                if($frontwardsCards.length>1){
+                    return
+                }
+                this.choosingCards(el)
+                const $cardsToCompare=document.querySelectorAll(".card.frontwards:not(.right-pair)");
+                this.comparingCards($cardsToCompare[0],$cardsToCompare[1]);
+                this.movesUpdate();
+            })
+        });
     }
     shufflingCards(){
         let result= array2.sort(function(){
@@ -65,6 +81,13 @@ class memoryCards{
         }
         chronometer=setInterval(updateChronometer, 1000);
     }
+    movesUpdate(){
+        this.moves++;
+        let textMoves;
+        textMoves=this.moves 
+        this.moves<10? textMoves="0"+this.moves:false;
+        document.querySelector(".moves").innerText=textMoves;
+    }
 }
 const array1=["❤","😁","🌹","💖","😜","😃","😉"]
 const array2=array1.concat(array1)
@@ -92,19 +115,8 @@ const $result=document.querySelector(".result h4");
 const newGame=new memoryCards(array2,$result);
 newGame.startCounting()
 
+newGame.startGame()
 const resetButton=document.querySelector(".button");
 resetButton.addEventListener("click",()=>{
-    newGame.shufflingCards()
+    newGame.startGame()
 })
-const $cards=document.querySelectorAll(".card");
-$cards.forEach(el =>{
-    el.addEventListener("click",()=>{
-        const $frontwardsCards=document.querySelectorAll(".frontwards:not(.right-pair)");
-        if($frontwardsCards.length>1){
-            return
-        }
-        newGame.choosingCards(el)
-        const $cardsToCompare=document.querySelectorAll(".card.frontwards:not(.right-pair)");
-        newGame.comparingCards($cardsToCompare[0],$cardsToCompare[1])
-    })
-});
