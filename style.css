@@ -8,17 +8,37 @@
     --orange: #f27121;
     --gradient: linear-gradient(35deg, var(--orange), var(--hotpink));
 }
+main{
+    display:  flex;
+}
 
 .table{
     position: relative;
     margin: auto 0;
-    height: 50vh;
-    width: 100%;
+    height: 100vh;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     align-content: center;
+}
+.controls-side{
+    height: 100vh;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 4rem;
+}
+.controls{
+    display: flex;
+    flex-direction: inherit;
+}
+.chronometer{
+    font-size: 4rem;
+    color: #e94057;
+    font-weight: 800;
 }
 .card{
     width: 6rem;
@@ -62,14 +82,13 @@
 .result{
     margin: 0 auto;
     height: 4rem;
-    width: 10rem;
+    width: 50%;
     border: thin solid black;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .button{
-    position: absolute;
     left: 60%;
     top: 50%;
     width: 10rem;
