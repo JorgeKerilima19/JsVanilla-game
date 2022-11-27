@@ -2,6 +2,8 @@ class memoryCards{
     constructor(arr,result){
         this.arr=arr;
         this.result=result;
+        this.seconds=0;
+        this.minutes=0;
     }
     shufflingCards(){
         let result= array2.sort(function(){
@@ -39,6 +41,13 @@ class memoryCards{
             this.result.textContent="Try again";
         }, 1000);
     }
+    startCounting(){
+        console.log("XD");
+    }
+    updateChronometer(){
+        this.seconds++;
+        console.log(this.seconds)
+    }
 }
 const array1=["❤","😁","🌹","💖","😜","😃","😉"]
 const array2=array1.concat(array1)
@@ -64,6 +73,7 @@ sortedCards.forEach(element => {
 });
 const $result=document.querySelector(".result h4");
 const newGame=new memoryCards(array2,$result);
+newGame.updateChronometer()
 
 const resetButton=document.querySelector(".button");
 resetButton.addEventListener("click",()=>{
