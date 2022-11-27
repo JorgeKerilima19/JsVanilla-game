@@ -14,12 +14,8 @@ class memoryCards{
     }
     comparingCards(card1,card2){
         if(card1.dataset.content===card2.dataset.content){
-            console.log(card1)
-            console.log(card2)
             this.rightPair(card1,card2)
         }else{
-            console.log(card1)
-            console.log(card2)
             this.wrongGuess(card1,card2)
         }
     }

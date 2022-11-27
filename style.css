@@ -79,35 +79,35 @@
 @keyframes error {
     10%,
     90% {
-        transform: rotateY(-180deg) translateX(-1px);
+        transform: translateX(-1px);
     }
     20%,
     80% {
-        transform: rotateY(-180deg) translateX(2px);
+        transform: translateX(2px);
     }
     30%,
     50%,
     70% {
-        transform: rotateY(-180deg) translateX(-4px);
+        transform:  translateX(-4px);
     }
     40%,
     60% {
-        transform: rotateY(-180deg) translateX(4px);
+        transform: translateX(4px);
     }
 }
 
 @keyframes right{
     from {
-        transform: rotateY(-180deg) scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
     opacity: 0.5;
     }
     25% {
-        transform: rotateY(-180deg) scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
         opacity: 0.5;
     }
 
     to {
-        transform: rotateY(-180deg) scale3d(1, 1, 1);
+        transform:scale3d(1, 1, 1);
         opacity: 0.5;
     }
 }
