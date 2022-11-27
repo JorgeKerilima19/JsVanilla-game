@@ -2,7 +2,6 @@ class memoryCards{
     constructor(arr,result){
         this.arr=arr;
         this.result=result;
-        this.minutes;
     }
     shufflingCards(){
         let result= array2.sort(function(){
@@ -42,11 +41,19 @@ class memoryCards{
     }
     startCounting(){
         let seconds=0;
+        let minutes=0;
         function updateChronometer(){
-            seconds++;
-            console.log(seconds);
+            seconds=seconds+1;
+            console.log(seconds)
+            console.log(minutes)
+            if (seconds > 59){
+                seconds=0;
+                minutes=minutes+1;
+            }
+            document.querySelector(".seconds").innerText=seconds
+            document.querySelector(".minutes").innerText=minutes
         }
-        // setInterval(updateChronometer, 1000);
+        setInterval(updateChronometer, 1000);
     }
 }
 const array1=["❤","😁","🌹","💖","😜","😃","😉"]
