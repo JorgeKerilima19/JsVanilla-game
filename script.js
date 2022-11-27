@@ -40,20 +40,30 @@ class memoryCards{
         }, 1000);
     }
     startCounting(){
-        let seconds=0;
+        let seconds=10;
         let minutes=0;
+        let secondsText;
+        let minutesText;
+        let chronometer;
         function updateChronometer(){
-            seconds=seconds+1;
-            console.log(seconds)
-            console.log(minutes)
-            if (seconds > 59){
-                seconds=0;
-                minutes=minutes+1;
+            seconds--;
+            if (seconds < 0){
+                seconds=59;
+                minutes--;
             }
-            document.querySelector(".seconds").innerText=seconds
-            document.querySelector(".minutes").innerText=minutes
+            if(minutes<0){
+                seconds=0;
+                minutes=0;
+                clearInterval(chronometer)
+            }
+            secondsText=seconds;
+            minutesText=minutes;
+            seconds<10? secondsText="0"+seconds:false
+            minutes<10? minutesText="0"+minutes:false
+            document.querySelector(".seconds").innerText=secondsText
+            document.querySelector(".minutes").innerText=minutesText
         }
-        setInterval(updateChronometer, 1000);
+        chronometer=setInterval(updateChronometer, 1000);
     }
 }
 const array1=["❤","😁","🌹","💖","😜","😃","😉"]

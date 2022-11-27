@@ -35,8 +35,10 @@ main{
     display: flex;
     flex-direction: inherit;
 }
-.chronometer{
-    font-size: 4rem;
+.control-container{
+    display: flex;
+    justify-content: space-between;
+    font-size: 3rem;
     color: #e94057;
     font-weight: 800;
 }
