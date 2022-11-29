@@ -28,7 +28,7 @@ main{
     width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-bottom: 4rem;
 }
 .controls{
@@ -37,7 +37,7 @@ main{
 }
 .control-container{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     font-size: 3rem;
     color: #e94057;
     font-weight: 800;
