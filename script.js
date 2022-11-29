@@ -5,19 +5,6 @@ class memoryCards{
         this.moves=0;
     }
     startGame(){
-        const $cards=document.querySelectorAll(".card");
-        $cards.forEach(el =>{
-            el.addEventListener("click",()=>{
-                const $frontwardsCards=document.querySelectorAll(".frontwards:not(.right-pair)");
-                if($frontwardsCards.length>1){
-                    return
-                }
-                this.choosingCards(el)
-                const $cardsToCompare=document.querySelectorAll(".card.frontwards:not(.right-pair)");
-                this.comparingCards($cardsToCompare[0],$cardsToCompare[1]);
-                this.movesUpdate();
-            })
-        });
     }
     shufflingCards(){
         let result= array2.sort(function(){
@@ -111,6 +98,19 @@ sortedCards.forEach(element => {
     $table.appendChild(card)
     card.appendChild(cardContent)
 });
+const $cards=document.querySelectorAll(".card");
+        $cards.forEach(el =>{
+            el.addEventListener("click",()=>{
+                const $frontwardsCards=document.querySelectorAll(".frontwards:not(.right-pair)");
+                if($frontwardsCards.length>1){
+                    return
+                }
+                newGame.choosingCards(el)
+                const $cardsToCompare=document.querySelectorAll(".card.frontwards:not(.right-pair)");
+                newGame.comparingCards($cardsToCompare[0],$cardsToCompare[1]);
+                newGame.movesUpdate();
+            })
+        });
 const $result=document.querySelector(".result h4");
 const newGame=new memoryCards(array2,$result);
 newGame.startCounting()
