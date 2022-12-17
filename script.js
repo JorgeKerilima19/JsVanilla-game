@@ -120,3 +120,10 @@ const resetButton=document.querySelector(".button");
 resetButton.addEventListener("click",()=>{
     newGame.startGame()
 })
+
+
+
+
+
+
+
