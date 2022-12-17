@@ -1,21 +1,6 @@
 const emojiArray=["💖","🌹","😎"];
 const contentToLoad=emojiArray.concat(emojiArray);
 
-const $table=document.querySelector("#table");
-$table.innerHTML=""
-
-function displayTable(){
-    contentToLoad.forEach(element => {
-        card=document.createElement("div");
-        cardContent=document.createElement("div");
-        cardContent.textContent=element;
-        card.classList.add("card");
-        card.dataset.content=element
-        cardContent.classList.add("card-content");
-        $table.appendChild(card)
-        card.appendChild(cardContent)
-    })
-}
 
 class memoryGame{
     constructor(array){
@@ -24,7 +9,19 @@ class memoryGame{
         this.movesController=document.querySelector(".moves");
     }
     startGame(){
+        const $table=document.querySelector("#table");
         this.totalMoves=0;
+        this.array=this.shuffleCards();
+        this.array.forEach(element => {
+            let card=document.createElement("div");
+            let cardContent=document.createElement("div");
+            cardContent.textContent=element;
+            card.classList.add("card");
+            card.dataset.content=element
+            cardContent.classList.add("card-content");
+            $table.appendChild(card);
+            card.appendChild(cardContent);
+        });
     }
     flipCards(card){
         const pairOfCards=document.querySelectorAll(".frontwards");
@@ -35,25 +32,35 @@ class memoryGame{
         this.totalMoves++;
         this.movesController.innerText=this.totalMoves;
     }
-    ableToFlip(){
+    shuffleCards(){
+        let result= this.array.sort(function(){
+            return 0.5 -Math.random();
+        });
+        return result;
     }
 }
 
 function gameReady(){
-    const cards=document.querySelectorAll(".card");
     const newGame =new memoryGame(contentToLoad);
-    cards.forEach(card=>{
-        card.addEventListener("click",()=>{
-            newGame.flipCards(card)
+    const mainSite=document.querySelectorAll(".main-site");
+    mainSite.forEach(el=>{
+        el.addEventListener("click",()=>{
+            newGame.startGame();
+            el.classList.add("visible");
+            const cards=document.querySelectorAll(".card");//pending to solve
+            cards.forEach(card=>{
+                card.addEventListener("click",()=>{
+                    newGame.flipCards(card);
+                });
+            });
         });
     });
 }
 
 
 if(document.readyState==="loading"){
-    document.addEventListener("DOMContentLoaded",displayTable())
+    document.addEventListener("DOMContentLoaded",gameReady())
 }else{
-    displayTable();
     gameReady();
 }
 
