@@ -1,4 +1,4 @@
-const emojiArray=["💖","🌹","😎"];
+const emojiArray=["💖","🌹","😎","🙌"];
 const contentToLoad=emojiArray.concat(emojiArray);
 
 
@@ -43,16 +43,16 @@ class memoryGame{
 function gameReady(){
     const newGame =new memoryGame(contentToLoad);
     const mainSite=document.querySelectorAll(".main-site");
+    newGame.startGame(contentToLoad);
     mainSite.forEach(el=>{
         el.addEventListener("click",()=>{
-            newGame.startGame();
             el.classList.add("visible");
-            const cards=document.querySelectorAll(".card");//pending to solve
-            cards.forEach(card=>{
-                card.addEventListener("click",()=>{
-                    newGame.flipCards(card);
-                });
-            });
+        });
+    });
+    const cards=document.querySelectorAll(".card");//pending to solve
+    cards.forEach(card=>{
+        card.addEventListener("click",()=>{
+            newGame.flipCards(card);
         });
     });
 }
