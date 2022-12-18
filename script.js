@@ -11,7 +11,7 @@ class memoryGame{
     startGame(){
         const $table=document.querySelector("#table");
         this.totalMoves=0;
-        this.array=this.shuffleCards();
+        this.array=this.shuffleCards(this.array);
         this.array.forEach(element => {
             let card=document.createElement("div");
             let cardContent=document.createElement("div");
@@ -23,20 +23,20 @@ class memoryGame{
             card.appendChild(cardContent);
         });
     }
+    shuffleCards(array){
+        let result= array.sort(function(){
+            return 0.5 -Math.random();
+        });
+        return result;
+    }
     flipCards(card){
         const pairOfCards=document.querySelectorAll(".frontwards");
         if(pairOfCards.length>1){
             return
         }
-        card.classList.add("frontwards")
+        card.classList.toggle("frontwards")
         this.totalMoves++;
         this.movesController.innerText=this.totalMoves;
-    }
-    shuffleCards(){
-        let result= this.array.sort(function(){
-            return 0.5 -Math.random();
-        });
-        return result;
     }
 }
 
@@ -49,14 +49,20 @@ function gameReady(){
             el.classList.add("visible");
         });
     });
-    const cards=document.querySelectorAll(".card");//pending to solve
+    const cards=document.querySelectorAll(".card");
     cards.forEach(card=>{
         card.addEventListener("click",()=>{
             newGame.flipCards(card);
         });
     });
+    //const resetButton=document.querySelectorAll(".button")
+    // resetButton.forEach(button=>{
+    //     button.addEventListener("click",()=>{
+    //         newGame.startGame(contentToLoad);
+    //         console.log(cards)
+    //     });
+    // }); //pending to solve
 }
-
 
 if(document.readyState==="loading"){
     document.addEventListener("DOMContentLoaded",gameReady())
