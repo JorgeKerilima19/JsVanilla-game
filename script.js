@@ -10,8 +10,6 @@ class memoryGame{
     }
     startGame(){
         this.totalMoves=0;
-        const cards=document.querySelectorAll(".card");
-        console.log("xd", cards)
         this.displayTable();
     }
     displayTable(){
@@ -28,7 +26,6 @@ class memoryGame{
             $table.appendChild(card);
             card.appendChild(cardContent);
         });
-
     }
     shuffleCards(){
         let result= this.array.sort(function(){
@@ -50,12 +47,6 @@ class memoryGame{
 function gameReady(){
     const newGame =new memoryGame(contentToLoad);
     const mainSite=document.querySelectorAll(".main-site");
-    const resetButton=document.querySelectorAll(".button");
-    resetButton.forEach(button=>{
-        button.addEventListener("click",()=>{
-            newGame.startGame();
-        });
-    }); //pending to solve
     newGame.startGame();
     mainSite.forEach(el=>{
         el.addEventListener("click",()=>{
@@ -68,7 +59,15 @@ function gameReady(){
             newGame.flipCards(card);
         });
     });
+    
 }
+const newGame=new memoryGame(contentToLoad)
+const resetButton=document.querySelectorAll(".button");
+resetButton.forEach(button=>{
+    button.addEventListener("click",()=>{
+        gameReady()
+    });
+}); //pending to solve
 
 if(document.readyState==="loading"){
     document.addEventListener("DOMContentLoaded",gameReady())
