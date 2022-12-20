@@ -9,10 +9,16 @@ class memoryGame{
         this.movesController=document.querySelector(".moves");
     }
     startGame(){
-        const $table=document.querySelector("#table");
         this.totalMoves=0;
-        this.array=this.shuffleCards(this.array);
-        this.array.forEach(element => {
+        const cards=document.querySelectorAll(".card");
+        console.log("xd", cards)
+        this.displayTable();
+    }
+    displayTable(){
+        const $table=document.querySelector("#table");
+        $table.textContent=""
+        let newArray=this.shuffleCards(this.array);
+        newArray.forEach(element => {
             let card=document.createElement("div");
             let cardContent=document.createElement("div");
             cardContent.textContent=element;
@@ -22,9 +28,10 @@ class memoryGame{
             $table.appendChild(card);
             card.appendChild(cardContent);
         });
+
     }
-    shuffleCards(array){
-        let result= array.sort(function(){
+    shuffleCards(){
+        let result= this.array.sort(function(){
             return 0.5 -Math.random();
         });
         return result;
@@ -43,7 +50,13 @@ class memoryGame{
 function gameReady(){
     const newGame =new memoryGame(contentToLoad);
     const mainSite=document.querySelectorAll(".main-site");
-    newGame.startGame(contentToLoad);
+    const resetButton=document.querySelectorAll(".button");
+    resetButton.forEach(button=>{
+        button.addEventListener("click",()=>{
+            newGame.startGame();
+        });
+    }); //pending to solve
+    newGame.startGame();
     mainSite.forEach(el=>{
         el.addEventListener("click",()=>{
             el.classList.add("visible");
@@ -55,13 +68,6 @@ function gameReady(){
             newGame.flipCards(card);
         });
     });
-    //const resetButton=document.querySelectorAll(".button")
-    // resetButton.forEach(button=>{
-    //     button.addEventListener("click",()=>{
-    //         newGame.startGame(contentToLoad);
-    //         console.log(cards)
-    //     });
-    // }); //pending to solve
 }
 
 if(document.readyState==="loading"){
