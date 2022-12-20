@@ -10,6 +10,7 @@ class memoryGame{
     }
     startGame(){
         this.totalMoves=0;
+        this.movesController.innerText=0;
         this.displayTable();
     }
     displayTable(){
@@ -65,7 +66,7 @@ const newGame=new memoryGame(contentToLoad)
 const resetButton=document.querySelectorAll(".button");
 resetButton.forEach(button=>{
     button.addEventListener("click",()=>{
-        gameReady()
+        gameReady();
     });
 }); //pending to solve
 
