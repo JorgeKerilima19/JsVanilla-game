@@ -7,11 +7,16 @@ class memoryGame{
         this.array=array
         this.totalMoves=0;
         this.movesController=document.querySelector(".moves");
+        this.minutes=document.querySelector(".minutes");
+        this.seconds=document.querySelector(".seconds");
     }
     startGame(){
         this.totalMoves=0;
         this.movesController.innerText=0;
+        this.minutes.innerText="00";
+        this.seconds.innerText="00";
         this.displayTable();
+        // this.startCounting();
     }
     displayTable(){
         const $table=document.querySelector("#table");
@@ -30,7 +35,7 @@ class memoryGame{
     }
     shuffleCards(){
         let result= this.array.sort(function(){
-            return 0.5 -Math.random();
+            return Math.random() -0.5;
         });
         return result;
     }
@@ -43,10 +48,35 @@ class memoryGame{
         this.totalMoves++;
         this.movesController.innerText=this.totalMoves;
     }
+    startCounting(timeSeconds){
+        let seconds=10;
+        let minutes=0;
+        let secondsText;
+        let minutesText;
+        let chronometer;
+        function updateChronometer(){
+            seconds--;
+            if (seconds < 0){
+                seconds=59;
+                minutes--;
+            }
+            if(minutes<0){
+                seconds=0;
+                minutes=0;
+                clearInterval(chronometer)
+            }
+            secondsText=seconds;
+            minutesText=minutes;
+            seconds<10? secondsText="0"+seconds:false
+            minutes<10? minutesText="0"+minutes:false
+            document.querySelector(".seconds").innerText=secondsText
+            document.querySelector(".minutes").innerText=minutesText
+        }
+        chronometer=setInterval(updateChronometer, 1000);
+    }
 }
 
 function gameReady(){
-    const newGame =new memoryGame(contentToLoad);
     const mainSite=document.querySelectorAll(".main-site");
     newGame.startGame();
     mainSite.forEach(el=>{
@@ -68,7 +98,7 @@ resetButton.forEach(button=>{
     button.addEventListener("click",()=>{
         gameReady();
     });
-}); //pending to solve
+});
 
 if(document.readyState==="loading"){
     document.addEventListener("DOMContentLoaded",gameReady())
