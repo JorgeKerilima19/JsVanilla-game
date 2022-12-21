@@ -11,6 +11,7 @@ class memoryGame{
         this.totalMinutes=document.querySelector(".minutes");
         this.totalSeconds=document.querySelector(".seconds");
         this.pairOfCards=[];
+        this.result=document.querySelector(".result h4");
     }
     startGame(){
         this.totalMoves=0;
@@ -61,8 +62,12 @@ class memoryGame{
         if(this.pairOfCards.length===2){
             if(this.getDataContent(card1)===this.getDataContent(card2)){
                 this.rightPair(card1,card2);
+                setTimeout(()=>{
+                    this.result.innerText="Let's try another card :D"
+                },1500)
             }else{
                 this.wrongPair(card1,card2);
+                this.result.innerText="You missed it :'D"
             }
             this.pairOfCards=[];
         }
@@ -71,11 +76,13 @@ class memoryGame{
     rightPair(card1,card2){
         card1.classList.add("right-pair");
         card2.classList.add("right-pair");
+        this.result.innerText="Right Pair! :D"
     }
     wrongPair(card1,card2){
         setTimeout(() => {
             card1.classList.remove("frontwards");
             card2.classList.remove("frontwards");
+            this.result.innerText="Let's try again :D"
         }, 1000);
     }
     startCounting(){
