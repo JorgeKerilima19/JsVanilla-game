@@ -14,8 +14,8 @@ class memoryGame{
     startGame(){
         this.totalMoves=0;
         this.movesController.innerText=0;
-        this.totalMinutes.innerText="00";
-        this.totalSeconds.innerText="00";
+        document.querySelector(".minutes").innerText="00";
+        document.querySelector(".seconds").innerText="00";
         this.displayTable();
         this.startCount=this.startCounting()
     }
@@ -70,15 +70,6 @@ class memoryGame{
         document.querySelector(".seconds").innerText=secondsInText;
         document.querySelector(".minutes").innerText=minutesInText;
         }, 1000);
-    }
-    updateChronometer(){
-        
-        // secondsInText=seconds;
-        // MinutesInText=minutes;
-        // seconds<10? secondsInText="0"+seconds:false;
-        // minutes<10? MinutesInText="0"+minutes:false;
-        // secondsToDisplay.innerText=secondsInText;
-        // minutesToDisplay.innerText=MinutesInText;
     }
 }
 
