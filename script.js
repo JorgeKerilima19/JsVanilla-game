@@ -3,10 +3,11 @@ const contentToLoad=emojiArray.concat(emojiArray);
 
 
 class memoryGame{
-    constructor(array){
+    constructor(array,totalTime){
         this.array=array
         this.totalMoves=0;
         this.movesController=document.querySelector(".moves");
+        this.totalTime=totalTime;
         this.totalMinutes=document.querySelector(".minutes");
         this.totalSeconds=document.querySelector(".seconds");
     }
@@ -16,7 +17,7 @@ class memoryGame{
         this.totalMinutes.innerText="00";
         this.totalSeconds.innerText="00";
         this.displayTable();
-        this.startCounting(150);
+        this.startCount=this.startCounting()
     }
     displayTable(){
         const $table=document.querySelector("#table");
@@ -48,34 +49,36 @@ class memoryGame{
         this.totalMoves++;
         this.movesController.innerText=this.totalMoves;
     }
-    startCounting(timeSeconds){
-        let seconds=timeSeconds%60;
-        let secondsInText;
-        let secondsToDisplay=this.totalSeconds;
-        let minutes=Math.floor((timeSeconds/60)%60);
-        let MinutesInText;
-        let minutesToDisplay=this.totalMinutes;
-        let chronometer;
-        function updateChronometer(){
-            seconds--;
-            if (seconds<0){
-                seconds=59;
-                minutes--;
-            }
-            if(minutes<0){
-                seconds=0;
-                minutes=0;
-                clearInterval(chronometer)
-            }
-            secondsInText=seconds;
-            MinutesInText=minutes;
-            seconds<10? secondsInText="0"+seconds:false
-            minutes<10? MinutesInText="0"+minutes:false
-            secondsToDisplay.innerText=secondsInText
-            minutesToDisplay.innerText=MinutesInText
-            console.log(minutes,seconds)
+    startCounting(){
+        this.totalSeconds=this.totalTime%60;
+        this.totalMinutes=Math.floor((this.totalTime/60)%60);
+        return setInterval(()=>{
+        this.totalSeconds--;
+        if (this.totalSeconds<0){
+            this.totalSeconds=59;
+            this.totalMinutes--;
         }
-        chronometer=setInterval(updateChronometer, 1000);
+        if(this.totalMinutes<0){
+            this.totalSeconds=0;
+            this.totalMinutes=0;
+            clearInterval(this.startCount)
+        }
+        let secondsInText=this.totalSeconds;
+        let minutesInText=this.totalMinutes;
+        this.totalSeconds<10? secondsInText="0"+this.totalSeconds:false;
+        this.totalMinutes<10? minutesInText="0"+this.totalMinutes:false;
+        document.querySelector(".seconds").innerText=secondsInText;
+        document.querySelector(".minutes").innerText=minutesInText;
+        }, 1000);
+    }
+    updateChronometer(){
+        
+        // secondsInText=seconds;
+        // MinutesInText=minutes;
+        // seconds<10? secondsInText="0"+seconds:false;
+        // minutes<10? MinutesInText="0"+minutes:false;
+        // secondsToDisplay.innerText=secondsInText;
+        // minutesToDisplay.innerText=MinutesInText;
     }
 }
 
@@ -95,7 +98,7 @@ function gameReady(){
     });
     
 }
-const newGame=new memoryGame(contentToLoad)
+const newGame=new memoryGame(contentToLoad,5)
 const resetButton=document.querySelectorAll(".button");
 resetButton.forEach(button=>{
     button.addEventListener("click",()=>{
