@@ -7,16 +7,16 @@ class memoryGame{
         this.array=array
         this.totalMoves=0;
         this.movesController=document.querySelector(".moves");
-        this.minutes=document.querySelector(".minutes");
-        this.seconds=document.querySelector(".seconds");
+        this.totalMinutes=document.querySelector(".minutes");
+        this.totalSeconds=document.querySelector(".seconds");
     }
     startGame(){
         this.totalMoves=0;
         this.movesController.innerText=0;
-        this.minutes.innerText="00";
-        this.seconds.innerText="00";
+        this.totalMinutes.innerText="00";
+        this.totalSeconds.innerText="00";
         this.displayTable();
-        this.startCounting(30);
+        this.startCounting(150);
     }
     displayTable(){
         const $table=document.querySelector("#table");
@@ -51,8 +51,10 @@ class memoryGame{
     startCounting(timeSeconds){
         let seconds=timeSeconds%60;
         let secondsInText;
+        let secondsToDisplay=this.totalSeconds;
         let minutes=Math.floor((timeSeconds/60)%60);
         let MinutesInText;
+        let minutesToDisplay=this.totalMinutes;
         let chronometer;
         function updateChronometer(){
             seconds--;
@@ -69,8 +71,8 @@ class memoryGame{
             MinutesInText=minutes;
             seconds<10? secondsInText="0"+seconds:false
             minutes<10? MinutesInText="0"+minutes:false
-            document.querySelector(".seconds").innerText=secondsInText
-            document.querySelector(".minutes").innerText=MinutesInText
+            secondsToDisplay.innerText=secondsInText
+            minutesToDisplay.innerText=MinutesInText
             console.log(minutes,seconds)
         }
         chronometer=setInterval(updateChronometer, 1000);
