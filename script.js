@@ -61,7 +61,7 @@ class memoryGame{
         if(this.totalMinutes<0){
             this.totalSeconds=0;
             this.totalMinutes=0;
-            clearInterval(this.startCount)
+            clearInterval(this.startCount);
         }
         let secondsInText=this.totalSeconds;
         let minutesInText=this.totalMinutes;
@@ -71,16 +71,17 @@ class memoryGame{
         document.querySelector(".minutes").innerText=minutesInText;
         }, 1000);
     }
+    stopCount(){
+        clearInterval(this.startCount);
+    }
 }
 
 function gameReady(){
-    const mainSite=document.querySelectorAll(".main-site");
-    newGame.startGame();
-    mainSite.forEach(el=>{
-        el.addEventListener("click",()=>{
-            el.classList.add("visible");
-        });
-    });
+    const mainSite=document.querySelector(".main-site");
+    newGame.startGame()
+    mainSite.addEventListener("click",()=>{
+        mainSite.classList.add("visible")
+    })
     const cards=document.querySelectorAll(".card");
     cards.forEach(card=>{
         card.addEventListener("click",()=>{
@@ -93,6 +94,7 @@ const newGame=new memoryGame(contentToLoad,5)
 const resetButton=document.querySelectorAll(".button");
 resetButton.forEach(button=>{
     button.addEventListener("click",()=>{
+        newGame.stopCount()
         gameReady();
     });
 });
