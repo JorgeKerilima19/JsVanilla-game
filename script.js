@@ -10,6 +10,7 @@ class memoryGame{
         this.totalTime=totalTime;
         this.totalMinutes=document.querySelector(".minutes");
         this.totalSeconds=document.querySelector(".seconds");
+        this.pairOfCards=[];
     }
     startGame(){
         this.totalMoves=0;
@@ -41,13 +42,36 @@ class memoryGame{
         return result;
     }
     flipCards(card){
-        const pairOfCards=document.querySelectorAll(".frontwards");
-        if(pairOfCards.length>1){
+        this.pairOfCards.push(card);
+        const pairCards=document.querySelectorAll(".frontwards:not(.right-pair)");
+        if(pairCards.length>1) {
             return
         }
-        card.classList.toggle("frontwards")
-        this.totalMoves++;
-        this.movesController.innerText=this.totalMoves;
+        card.classList.add("frontwards");
+        this.comparingCards(this.pairOfCards[0],this.pairOfCards[1]);
+    }
+    comparingCards(card1,card2){
+        if(this.pairOfCards.length===2){
+            this.totalMoves++;
+            this.movesController.innerText=this.totalMoves;
+            if(card1.dataset.content===card2.dataset.content){
+                this.rightPair(card1,card2);
+            }else{
+                this.wrongPair(card1,card2);
+            }
+            this.pairOfCards=[];
+        }
+        return
+    }
+    rightPair(card1,card2){
+        card1.classList.add("right-pair");
+        card2.classList.add("right-pair");
+    }
+    wrongPair(card1,card2){
+        setTimeout(() => {
+            card1.classList.remove("frontwards");
+            card2.classList.remove("frontwards");
+        }, 1000);
     }
     startCounting(){
         this.totalSeconds=this.totalTime%60;
@@ -94,7 +118,7 @@ const newGame=new memoryGame(contentToLoad,5)
 const resetButton=document.querySelectorAll(".button");
 resetButton.forEach(button=>{
     button.addEventListener("click",()=>{
-        newGame.stopCount()
+        newGame.stopCount();
         gameReady();
     });
 });
