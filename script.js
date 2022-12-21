@@ -42,7 +42,11 @@ class memoryGame{
         return result;
     }
     flipCards(card){
-        this.pairOfCards.push(card);
+        if(!this.pairOfCards.includes(card)){
+            this.pairOfCards.push(card);
+            this.totalMoves++;
+            this.movesController.innerText=this.totalMoves;
+        }
         const pairCards=document.querySelectorAll(".frontwards:not(.right-pair)");
         if(pairCards.length>1) {
             return
@@ -50,11 +54,12 @@ class memoryGame{
         card.classList.add("frontwards");
         this.comparingCards(this.pairOfCards[0],this.pairOfCards[1]);
     }
+    getDataContent(card){
+        return card.dataset.content
+    }
     comparingCards(card1,card2){
         if(this.pairOfCards.length===2){
-            this.totalMoves++;
-            this.movesController.innerText=this.totalMoves;
-            if(card1.dataset.content===card2.dataset.content){
+            if(this.getDataContent(card1)===this.getDataContent(card2)){
                 this.rightPair(card1,card2);
             }else{
                 this.wrongPair(card1,card2);
