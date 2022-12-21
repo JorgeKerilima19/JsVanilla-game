@@ -16,7 +16,7 @@ class memoryGame{
         this.minutes.innerText="00";
         this.seconds.innerText="00";
         this.displayTable();
-        // this.startCounting();
+        this.startCounting(150);
     }
     displayTable(){
         const $table=document.querySelector("#table");
@@ -49,30 +49,33 @@ class memoryGame{
         this.movesController.innerText=this.totalMoves;
     }
     startCounting(timeSeconds){
-        let seconds=10;
-        let minutes=0;
-        let secondsText;
-        let minutesText;
-        let chronometer;
-        function updateChronometer(){
-            seconds--;
-            if (seconds < 0){
-                seconds=59;
-                minutes--;
-            }
-            if(minutes<0){
-                seconds=0;
-                minutes=0;
-                clearInterval(chronometer)
-            }
-            secondsText=seconds;
-            minutesText=minutes;
-            seconds<10? secondsText="0"+seconds:false
-            minutes<10? minutesText="0"+minutes:false
-            document.querySelector(".seconds").innerText=secondsText
-            document.querySelector(".minutes").innerText=minutesText
-        }
-        chronometer=setInterval(updateChronometer, 1000);
+        let seconds=timeSeconds%60;
+        let minutes=Math.floor((timeSeconds/60)%60);
+        console.log(minutes,seconds)
+        // let seconds=10;
+        // let minutes=0;
+        // let secondsText;
+        // let minutesText;
+        // let chronometer;
+        // function updateChronometer(){
+        //     seconds--;
+        //     if (seconds < 0){
+        //         seconds=59;
+        //         minutes--;
+        //     }
+        //     if(minutes<0){
+        //         seconds=0;
+        //         minutes=0;
+        //         clearInterval(chronometer)
+        //     }
+        //     secondsText=seconds;
+        //     minutesText=minutes;
+        //     seconds<10? secondsText="0"+seconds:false
+        //     minutes<10? minutesText="0"+minutes:false
+        //     document.querySelector(".seconds").innerText=secondsText
+        //     document.querySelector(".minutes").innerText=minutesText
+        // }
+        // chronometer=setInterval(updateChronometer, 1000);
     }
 }
 
