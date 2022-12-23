@@ -1,4 +1,4 @@
-const emojiArray = ["💖", "🌹", "😎", "🙌"];
+const emojiArray = ["💖", "🌹"];
 const contentToLoad = emojiArray.concat(emojiArray);
 
 class memoryGame {
@@ -120,13 +120,15 @@ class memoryGame {
     clearInterval(this.startCount);
   }
   hideCards(){
-    this.array.forEach((el)=>{
-      el.classList.remove("right-pair");
-    })
+    this.rightPairCollection.forEach(element => {
+      element.classList.remove("frontwards");
+      element.classList.remove("right-pair");
+    });
   }
   victory(){
+    this.stopCount();
     document.querySelector(".main-site").classList.remove("visible");
-    this.hideCards()
+    this.hideCards();
   }
 }
 
