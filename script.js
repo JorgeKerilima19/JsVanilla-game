@@ -2,7 +2,7 @@ const emojiArray = ["💖", "🌹"];
 const contentToLoad = emojiArray.concat(emojiArray);
 
 class memoryGame {
-  constructor(array, totalTime) {
+  constructor(array, totalTime,actualLevel) {
     this.array = array;
     this.rightPairCollection=Array();
     this.totalMoves = 0;
@@ -10,6 +10,7 @@ class memoryGame {
     this.totalTime = totalTime;
     this.totalMinutes = document.querySelector(".minutes");
     this.totalSeconds = document.querySelector(".seconds");
+    this.level=actualLevel;
     this.pairOfCards = [];
     this.result = document.querySelector(".result h4");
   }
@@ -127,16 +128,16 @@ class memoryGame {
   }
   victory(){
     this.stopCount();
-    document.querySelector(".main-site").classList.remove("visible");
+    document.querySelector(".screen-welcome").classList.remove("invisible");
     this.hideCards();
   }
 }
 
 function gameReady() {
-  const mainSite = document.querySelector(".main-site");
+  const mainSite = document.querySelector(".screen-welcome");
   newGame.startGame();
   mainSite.addEventListener("click", () => {
-    mainSite.classList.add("visible");
+    mainSite.classList.add("invisible");
   });
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
