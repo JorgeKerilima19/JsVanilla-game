@@ -1,4 +1,3 @@
-const emojiArray = [["💖", "🌹"],["😎","🎶"],["👀","😁"],["🎈","🧶"],["🎃","🥋"]];
 class memoryGame {
   constructor(array, totalTime) {
     this.array = array;
@@ -134,16 +133,26 @@ class memoryGame {
 }
 class levels{
   constructor(){
-    this.actualLevel=0
+    this.level=[]
+    this.actualLevel=0;
+    this.emojiArray=[["💖", "🌹"],["😎","🎶"],["👀","😁"],["🎈","🧶"],["🎃","🥋"]];
   }
-  levelUp1(){
-    this.array=["hola","xd"]
-    return this.array.concat(this.array)
+  levelUp(){
+    for(let i=0; i<this.actualLevel+1;i++){
+      this.level=this.level.concat(this.emojiArray[i]);
+      console.log(this.level)
+    }
+    this.level=this.concatArray(this.level)
+    return this.level;
+  }
+  concatArray(array){
+    array=array.concat(array);
+    return array;
   }
 }
 const nivel= new levels();
 
-const contentToLoad=nivel.levelUp1();
+const contentToLoad=nivel.levelUp();
 const newGame = new memoryGame(contentToLoad, 5);
 function gameReady() {
   const mainSite = document.querySelector(".screen-welcome");
