@@ -136,7 +136,7 @@ class memoryGame {
 function gameReady() {
   const mainSite = document.querySelector(".screen-welcome");
   newGame.startGame();
-  mainSite.addEventListener("click", () => {
+  document.querySelector("#button-start").addEventListener("click", () => {
     mainSite.classList.add("invisible");
   });
   const cards = document.querySelectorAll(".card");
