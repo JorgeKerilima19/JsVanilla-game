@@ -28,18 +28,27 @@ main {
   justify-content: space-evenly;
   z-index: 100;
 }
-.wrapper-welcome{
+[class^="wrapper"]{
   font-size: 2em;
   height: 50vh;
-  min-width: 16rem;
+  min-width: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }
-.wrapper-welcome button{
-  padding: 1rem;
-  font-size: 0.8em;
+button{
+  padding: 0.5rem 1rem;
+  font-size: 0.7em;
+  border:0;
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: pointer;
+}
+.buttons-controller{
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
 }
 .invisible {
   display: none;

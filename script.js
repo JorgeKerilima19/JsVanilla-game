@@ -128,7 +128,7 @@ class memoryGame {
   }
   victory(){
     this.stopCount();
-    document.querySelector(".screen-welcome").classList.remove("invisible");
+    document.querySelector(".screen-update-level").classList.remove("invisible");
     this.hideCards();
   }
 }
