@@ -133,26 +133,27 @@ class memoryGame {
 }
 class levels{
   constructor(){
-    this.level=[]
-    this.actualLevel=0;
+    this.levelContent=[]
+    this.levelNumber=0;
     this.emojiArray=[["💖", "🌹"],["😎","🎶"],["👀","😁"],["🎈","🧶"],["🎃","🥋"]];
   }
   levelUp(){
-    for(let i=0; i<this.actualLevel+1;i++){
-      this.level=this.level.concat(this.emojiArray[i]);
-      console.log(this.level)
+    for(let i=0; i<this.levelNumber+1;i++){
+      this.levelContent=this.levelContent.concat(this.emojiArray[i]);
     }
-    this.level=this.concatArray(this.level)
-    return this.level;
+    this.levelContent=this.concatArray(this.levelContent)
+    return this.levelContent;
   }
   concatArray(array){
     array=array.concat(array);
     return array;
   }
+  updateLevel(){
+    this.levelNumber++;
+  }
 }
-const nivel= new levels();
-
-const contentToLoad=nivel.levelUp();
+const level= new levels();
+const contentToLoad=level.levelUp();
 const newGame = new memoryGame(contentToLoad, 5);
 function gameReady() {
   const mainSite = document.querySelector(".screen-welcome");
