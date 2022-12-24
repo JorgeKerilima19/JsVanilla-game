@@ -1,8 +1,6 @@
-const emojiArray = ["💖", "🌹"];
-const contentToLoad = emojiArray.concat(emojiArray);
-
+const emojiArray = [["💖", "🌹"],["😎","🎶"],["👀","😁"],["🎈","🧶"],["🎃","🥋"]];
 class memoryGame {
-  constructor(array, totalTime,actualLevel) {
+  constructor(array, totalTime) {
     this.array = array;
     this.rightPairCollection=Array();
     this.totalMoves = 0;
@@ -10,7 +8,6 @@ class memoryGame {
     this.totalTime = totalTime;
     this.totalMinutes = document.querySelector(".minutes");
     this.totalSeconds = document.querySelector(".seconds");
-    this.level=actualLevel;
     this.pairOfCards = [];
     this.result = document.querySelector(".result h4");
   }
@@ -38,8 +35,8 @@ class memoryGame {
       card.appendChild(cardContent);
     });
   }
-  shuffleCards() {
-    let result = this.array.sort(function () {
+  shuffleCards(array) {
+    let result = array.sort(function () {
       return Math.random() - 0.5;
     });
     return result;
@@ -135,21 +132,19 @@ class memoryGame {
     }, 500);
   }
 }
-
 class levels{
-  constructor(levelArray){
-    this.array=levelArray
+  constructor(){
+    this.actualLevel=0
   }
-  updateLevel(){
-    this.array=this.array.concat(":D")
+  levelUp1(){
+    this.array=["hola","xd"]
+    return this.array.concat(this.array)
   }
-
 }
-const level= new levels(contentToLoad);
-console.log(level)
-level.updateLevel()
-console.log(level)
+const nivel= new levels();
 
+const contentToLoad=nivel.levelUp1();
+const newGame = new memoryGame(contentToLoad, 5);
 function gameReady() {
   const mainSite = document.querySelector(".screen-welcome");
   newGame.startGame();
@@ -163,7 +158,6 @@ function gameReady() {
     });
   });
 }
-const newGame = new memoryGame(contentToLoad, 5);
 const resetButton = document.querySelectorAll(".button");
 resetButton.forEach((button) => {
   button.addEventListener("click", () => {
@@ -171,6 +165,10 @@ resetButton.forEach((button) => {
     gameReady();
   });
 });
+
+
+
+
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", gameReady());
