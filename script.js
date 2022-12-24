@@ -21,6 +21,7 @@ class memoryGame {
     document.querySelector(".seconds").innerText = "00";
     this.displayTable();
     this.startCount = this.startCounting();
+    this.rightPairCollection=[];
   }
   displayTable() {
     const $table = document.querySelector("#table");
@@ -128,10 +129,26 @@ class memoryGame {
   }
   victory(){
     this.stopCount();
-    document.querySelector(".screen-update-level").classList.remove("invisible");
-    this.hideCards();
+    setTimeout(() => {
+      document.querySelector(".screen-update-level").classList.remove("invisible");
+      this.hideCards();
+    }, 500);
   }
 }
+
+class levels{
+  constructor(levelArray){
+    this.array=levelArray
+  }
+  updateLevel(){
+    this.array=this.array.concat(":D")
+  }
+
+}
+const level= new levels(contentToLoad);
+console.log(level)
+level.updateLevel()
+console.log(level)
 
 function gameReady() {
   const mainSite = document.querySelector(".screen-welcome");
