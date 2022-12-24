@@ -1,6 +1,6 @@
 class memoryGame {
-  constructor(array, totalTime) {
-    this.array = array;
+  constructor(totalTime,levelNumber=0) {
+    this.levelNumber=levelNumber;
     this.rightPairCollection=Array();
     this.totalMoves = 0;
     this.movesController = document.querySelector(".moves");
@@ -10,8 +10,11 @@ class memoryGame {
     this.pairOfCards = [];
     this.result = document.querySelector(".result h4");
   }
-  startGame() {
+  startGame(levelNumber) {
+    this.level= new levels(levelNumber);
+    this.array = this.level.currentLevel();
     this.totalMoves = 0;
+    this.levelNumber=levelNumber;
     this.movesController.innerText = 0;
     document.querySelector(".minutes").innerText = "00";
     document.querySelector(".seconds").innerText = "00";
@@ -130,37 +133,38 @@ class memoryGame {
       this.hideCards();
     }, 500);
   }
+  updateLevel(){
+    this.levelNumber++;
+  }
 }
 class levels{
-  constructor(){
+  constructor(levelNumber){
     this.levelContent=[]
-    this.levelNumber=0;
+    this.levelNumber=levelNumber;
     this.emojiArray=[["💖", "🌹"],["😎","🎶"],["👀","😁"],["🎈","🧶"],["🎃","🥋"]];
   }
-  levelUp(){
+  currentLevel(){
     for(let i=0; i<this.levelNumber+1;i++){
       this.levelContent=this.levelContent.concat(this.emojiArray[i]);
     }
-    this.levelContent=this.concatArray(this.levelContent)
+    this.levelContent=this.concatArray(this.levelContent);
     return this.levelContent;
   }
   concatArray(array){
     array=array.concat(array);
     return array;
   }
-  updateLevel(){
-    this.levelNumber++;
-  }
 }
-const level= new levels();
-const contentToLoad=level.levelUp();
-const newGame = new memoryGame(contentToLoad, 5);
+const newGame = new memoryGame(5,);
 function gameReady() {
-  const mainSite = document.querySelector(".screen-welcome");
-  newGame.startGame();
   document.querySelector("#button-start").addEventListener("click", () => {
+    const mainSite = document.querySelector(".screen-welcome");
     mainSite.classList.add("invisible");
+    newGame.startGame(newGame.levelNumber);
+    cardsInteraction();
   });
+}
+function cardsInteraction(){
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     card.addEventListener("click", () => {
@@ -175,6 +179,14 @@ resetButton.forEach((button) => {
     gameReady();
   });
 });
+const nextLevelButton=document.querySelector(".button-nextLevel");
+  nextLevelButton.addEventListener("click",()=>{
+  document.querySelector(".screen-update-level").classList.add("invisible");
+    newGame.updateLevel()
+    newGame.startGame(newGame.levelNumber);
+    console.log(newGame.levelNumber)
+    cardsInteraction();
+})
 
 
 
