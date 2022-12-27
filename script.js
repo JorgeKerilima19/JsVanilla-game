@@ -15,7 +15,7 @@ class memoryGame {
     this.level= new levels(levelNumber);
     this.array = this.level.currentLevel();
     this.totalMoves = 0;
-    this.movesLimit.innerText=movesLimit
+    this.movesLimit.innerText=movesLimit;
     this.levelNumber=levelNumber;
     this.movesController.innerText = 0;
     document.querySelector(".minutes").innerText = "00";
@@ -136,6 +136,11 @@ class memoryGame {
       this.hideCards();
     }, 500);
   }
+  gameOver(limitMoves){
+    if(this.totalMoves>=limitMoves){
+      document.querySelector(".screen-gameover").classList.remove("invisible")
+    }
+  }
   updateLevel(){
     this.levelNumber++;
   }
@@ -175,6 +180,7 @@ function cardsInteraction(){
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       newGame.flipCards(card);
+      newGame.gameOver(initialMovesLimit);
     });
   });
 }
