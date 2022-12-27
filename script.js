@@ -4,6 +4,7 @@ class memoryGame {
     this.rightPairCollection=Array();
     this.totalMoves = 0;
     this.movesController = document.querySelector(".moves");
+    this.actualLevel=document.querySelector(".level");
     this.totalTime = totalTime;
     this.totalMinutes = document.querySelector(".minutes");
     this.totalSeconds = document.querySelector(".seconds");
@@ -18,6 +19,7 @@ class memoryGame {
     this.movesController.innerText = 0;
     document.querySelector(".minutes").innerText = "00";
     document.querySelector(".seconds").innerText = "00";
+    this.actualLevel.innerText=this.levelNumber + 1;
     this.displayTable();
     this.startCount = this.startCounting();
     this.rightPairCollection=[];

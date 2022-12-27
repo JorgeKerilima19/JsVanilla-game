@@ -77,10 +77,12 @@ button{
 .controls {
   display: flex;
   flex-direction: inherit;
+  align-items: center;
 }
 .control-container {
   display: flex;
-  justify-content: space-evenly;
+  width: 80%;
+  justify-content: space-between;
   font-size: 3rem;
   color: #ffffff;
   font-weight: 800;
