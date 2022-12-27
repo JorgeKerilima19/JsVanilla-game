@@ -1,20 +1,21 @@
 class memoryGame {
-  constructor(totalTime,levelNumber=0) {
+  constructor(levelNumber=0) {
     this.levelNumber=levelNumber;
     this.rightPairCollection=Array();
-    this.totalMoves = 0;
     this.movesController = document.querySelector(".moves");
+    this.movesLimit = document.querySelector(".moves-left");
     this.actualLevel=document.querySelector(".level");
-    this.totalTime = totalTime;
     this.totalMinutes = document.querySelector(".minutes");
     this.totalSeconds = document.querySelector(".seconds");
     this.pairOfCards = [];
     this.result = document.querySelector(".result h4");
   }
-  startGame(levelNumber) {
+  startGame(totalTime,levelNumber=0,movesLimit) {
+    this.totalTime = totalTime;
     this.level= new levels(levelNumber);
     this.array = this.level.currentLevel();
     this.totalMoves = 0;
+    this.movesLimit.innerText=movesLimit
     this.levelNumber=levelNumber;
     this.movesController.innerText = 0;
     document.querySelector(".minutes").innerText = "00";
@@ -143,7 +144,7 @@ class levels{
   constructor(levelNumber){
     this.levelContent=[]
     this.levelNumber=levelNumber;
-    this.emojiArray=[["💖", "🌹"],["😎","🎶"],["👀","😁"],["🎈","🧶"],["🎃","🥋"]];
+    this.emojiArray=[["💖", "🌹"],["😎","🎶"],["👀","😁"],["🎈","🧶"],["🎃","👑"]];
   }
   currentLevel(){
     for(let i=0; i<this.levelNumber+1;i++){
@@ -157,12 +158,15 @@ class levels{
     return array;
   }
 }
-const newGame = new memoryGame(5,);
+let initialTime=15;
+let initialMovesLimit=10;
+
+const newGame = new memoryGame();
 function gameReady() {
   document.querySelector("#button-start").addEventListener("click", () => {
     const mainSite = document.querySelector(".screen-welcome");
     mainSite.classList.add("invisible");
-    newGame.startGame(newGame.levelNumber);
+    newGame.startGame(initialTime,newGame.levelNumber,initialMovesLimit);
     cardsInteraction();
   });
 }
@@ -181,14 +185,17 @@ resetButton.forEach((button) => {
     gameReady();
   });
 });
-const nextLevelButton=document.querySelector(".button-nextLevel");
-  nextLevelButton.addEventListener("click",()=>{
-  document.querySelector(".screen-update-level").classList.add("invisible");
-    newGame.updateLevel()
-    newGame.startGame(newGame.levelNumber);
-    console.log(newGame.levelNumber)
-    cardsInteraction();
-})
+const nextLevelButton=document.querySelectorAll(".button-nextLevel");
+  nextLevelButton.forEach(button => {
+    button.addEventListener("click",()=>{
+      document.querySelector(".screen-update-level").classList.add("invisible");
+        newGame.updateLevel()
+        initialTime=initialTime+10;
+        initialMovesLimit=initialMovesLimit+10;
+        newGame.startGame(initialTime,newGame.levelNumber,initialMovesLimit);
+        cardsInteraction();
+    })
+  });
 
 
 
