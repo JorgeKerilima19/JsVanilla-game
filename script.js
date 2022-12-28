@@ -188,7 +188,9 @@ const resetButton = document.querySelectorAll(".button");
 resetButton.forEach((button) => {
   button.addEventListener("click", () => {
     newGame.stopCount();
-    gameReady();
+    newGame.levelNumber=newGame.levelNumber;
+    newGame.startGame(initialTime,newGame.levelNumber,initialMovesLimit);
+    cardsInteraction();
   });
 });
 const nextLevelButton=document.querySelectorAll(".button-nextLevel");
