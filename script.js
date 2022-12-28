@@ -24,6 +24,7 @@ class memoryGame {
     this.displayTable();
     this.startCount = this.startCounting();
     this.rightPairCollection=[];
+    document.querySelector(".screen-gameover").classList.add("invisible");
   }
   displayTable() {
     const $table = document.querySelector("#table");
@@ -136,9 +137,12 @@ class memoryGame {
       this.hideCards();
     }, 500);
   }
-  gameOver(limitMoves){
+  gameOver(limitMoves,limitTime=0){
     if(this.totalMoves>=limitMoves){
-      document.querySelector(".screen-gameover").classList.remove("invisible")
+      document.querySelector(".screen-gameover").classList.remove("invisible");
+    }
+    if(this.totalSeconds===0){
+      document.querySelector(".screen-gameover").classList.remove("invisible");
     }
   }
   updateLevel(){
@@ -163,7 +167,7 @@ class levels{
     return array;
   }
 }
-let initialTime=15;
+let initialTime=10;
 let initialMovesLimit=10;
 
 const newGame = new memoryGame();
@@ -184,8 +188,8 @@ function cardsInteraction(){
     });
   });
 }
-const resetButton = document.querySelectorAll(".button");
-resetButton.forEach((button) => {
+const resetButton = document.querySelectorAll(".button-restart");
+resetButton.forEach(button => {
   button.addEventListener("click", () => {
     newGame.stopCount();
     newGame.levelNumber=newGame.levelNumber;
