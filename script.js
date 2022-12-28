@@ -119,6 +119,9 @@ class memoryGame {
         : false;
       document.querySelector(".seconds").innerText = secondsInText;
       document.querySelector(".minutes").innerText = minutesInText;
+      if(this.totalSeconds===0){
+        document.querySelector(".screen-gameover").classList.remove("invisible");
+      }
     }, 1000);
   }
   stopCount() {
@@ -139,9 +142,6 @@ class memoryGame {
   }
   gameOver(limitMoves,limitTime=0){
     if(this.totalMoves>=limitMoves){
-      document.querySelector(".screen-gameover").classList.remove("invisible");
-    }
-    if(this.totalSeconds===0){
       document.querySelector(".screen-gameover").classList.remove("invisible");
     }
   }
