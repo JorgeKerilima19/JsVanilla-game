@@ -1,12 +1,24 @@
+import newGame from "../gameClass.js";
+
 export const gamePage = () => {
   const container = document.createElement("div");
 
-  const backToMeny = document.createElement("a");
-  backToMeny.href = "#";
+  //draw table for cards
+  const table = document.createElement("div");
 
-  backToMeny.innerText = "Go Back";
+  table.setAttribute("id", "table");
 
-  container.appendChild(backToMeny);
+  const backToMenu = document.createElement("a");
+  backToMenu.href = "#";
+
+  backToMenu.innerText = "Go Back";
+
+  //classes
+
+  table.classList.add("table");
+
+  container.appendChild(table);
+  container.appendChild(backToMenu);
 
   return container;
 };

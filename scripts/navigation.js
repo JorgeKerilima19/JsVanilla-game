@@ -1,4 +1,5 @@
 import { gamePage, homePage, gameOver } from "./components/index.js";
+import newGame from "./gameClass.js";
 
 const navigation = () => {
   const hash = window.location.hash.substring(1);
@@ -15,6 +16,8 @@ const navigation = () => {
       const game = gamePage();
       mainWrapper.innerHTML = "";
       mainWrapper.appendChild(game);
+      newGame.drawTable();
+
       break;
     case "gameover":
       const gameover = gameOver();
