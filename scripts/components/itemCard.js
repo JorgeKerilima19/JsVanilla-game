@@ -1,4 +1,4 @@
-const itemCard = (frontContent) => {
+const itemCard = (backContent) => {
   const container = document.createElement("article");
 
   const cardFront = document.createElement("div");
@@ -6,12 +6,18 @@ const itemCard = (frontContent) => {
 
   //classes
 
-  cardFront.classList.add("card-container");
+  container.classList.add("card-container");
+  cardFront.classList.add("card-front");
+  cardBack.classList.add("card-back");
 
-  cardFront.innerText = frontContent;
+  cardBack.innerText = backContent;
 
   container.appendChild(cardFront);
   container.appendChild(cardBack);
+
+  container.addEventListener("click", () => {
+    container.classList.toggle("forwards");
+  });
 
   return container;
 };
