@@ -70,3 +70,7 @@ main > div {
   border-radius: 0.5rem;
   transform: rotateY(0deg);
 }
+.right-pair {
+  pointer-events: none;
+  opacity: 0.5;
+}

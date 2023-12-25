@@ -16,7 +16,7 @@ const navigation = () => {
       const game = gamePage();
       mainWrapper.innerHTML = "";
       mainWrapper.appendChild(game);
-      newGame.drawTable();
+      newGame.startGame();
 
       break;
     case "gameover":
