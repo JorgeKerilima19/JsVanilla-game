@@ -12,6 +12,10 @@ class game {
     this.level = level;
     this.startArray = [];
     this.pairToCompare = [];
+    this.time = 0;
+    this.pause = false;
+    this.minutes = 0;
+    this.seconds = 0;
   }
 
   drawTable() {
@@ -35,6 +39,24 @@ class game {
   }
   startGame() {
     this.drawTable();
+    this.startTime();
+  }
+  startTime() {
+    this.time = setInterval(() => {
+      console.log(this.minutes++);
+    }, 1000);
+  }
+  stopTime() {
+    this.pause = !this.pause;
+    clearInterval(this.time);
+
+    if (!this.pause) {
+      clearInterval(this.time);
+      console.log("cleared");
+    } else {
+      this.startTime();
+      console.log("starting new one");
+    }
   }
   rightPair(card1, card2) {
     //add blocking events class

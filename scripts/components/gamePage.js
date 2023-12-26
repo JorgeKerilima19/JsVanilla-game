@@ -17,8 +17,16 @@ export const gamePage = () => {
 
   table.classList.add("table");
 
+  const button = document.createElement("button");
+  button.innerText = "CLick Me";
+
+  button.addEventListener("click", () => {
+    newGame.stopTime();
+  });
+
   container.appendChild(table);
   container.appendChild(backToMenu);
+  container.appendChild(button);
 
   return container;
 };
