@@ -51,6 +51,10 @@ class game {
       console.log(this.time++);
     }, 1000);
   }
+  clear() {
+    //clear interval on call
+    clearInterval(this.intervalTime);
+  }
   stopTime() {
     //allow the user to pause
 

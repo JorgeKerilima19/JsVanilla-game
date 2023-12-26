@@ -11,6 +11,8 @@ const navigation = () => {
       const root = homePage();
       mainWrapper.innerHTML = "";
       mainWrapper.appendChild(root);
+      newGame.clear();
+      newGame.time = 0;
       break;
     case "game":
       const game = gamePage();
