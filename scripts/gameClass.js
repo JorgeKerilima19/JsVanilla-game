@@ -12,10 +12,10 @@ class game {
     this.level = level;
     this.startArray = [];
     this.pairToCompare = [];
+    this.intervalTime;
     this.time = 0;
     this.pause = false;
-    this.minutes = 0;
-    this.seconds = 0;
+    this.totalPauses = 0;
   }
 
   drawTable() {
@@ -41,21 +41,32 @@ class game {
     this.drawTable();
     this.startTime();
   }
+  getPassTime() {
+    return this.time;
+  }
   startTime() {
-    this.time = setInterval(() => {
-      console.log(this.minutes++);
+    //update time passed
+
+    this.intervalTime = setInterval(() => {
+      console.log(this.time++);
     }, 1000);
   }
   stopTime() {
-    this.pause = !this.pause;
-    clearInterval(this.time);
+    //allow the user to pause
 
-    if (!this.pause) {
-      clearInterval(this.time);
-      console.log("cleared");
+    if (this.totalPauses > 0) {
+      this.pause = !this.pause;
+      clearInterval(this.intervalTime);
+
+      if (!this.pause) {
+        clearInterval(this.intervalTime);
+        console.log("cleared");
+      } else {
+        this.startTime();
+        console.log("starting new one");
+      }
     } else {
-      this.startTime();
-      console.log("starting new one");
+      alert("No pauses available");
     }
   }
   rightPair(card1, card2) {

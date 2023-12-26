@@ -1,4 +1,5 @@
 import newGame from "../gameClass.js";
+import { timer } from "./timer.js";
 
 export const gamePage = () => {
   const container = document.createElement("div");
@@ -17,12 +18,7 @@ export const gamePage = () => {
 
   table.classList.add("table");
 
-  const button = document.createElement("button");
-  button.innerText = "CLick Me";
-
-  button.addEventListener("click", () => {
-    newGame.stopTime();
-  });
+  const button = timer(newGame.minutes);
 
   container.appendChild(table);
   container.appendChild(backToMenu);
