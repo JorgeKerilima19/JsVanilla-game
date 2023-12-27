@@ -6,7 +6,7 @@ export const timer = () => {
   const secondsHand = document.createElement("span");
   const separator = document.createElement("span");
 
-  let minutes = -1;
+  let minutes = 0;
   let seconds = 0;
 
   minuteHand.innerText = "00";
@@ -16,7 +16,7 @@ export const timer = () => {
   function updateTime() {
     const time = newGame.getPassTime();
 
-    if (time % 60 === 0) {
+    if (time > 60) {
       minutes++;
       seconds = 0;
     }

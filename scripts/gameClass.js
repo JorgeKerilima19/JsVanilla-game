@@ -16,6 +16,7 @@ class game {
     this.time = 0;
     this.pause = false;
     this.totalPauses = 0;
+    this.endLevel = false;
   }
 
   drawTable() {
@@ -48,7 +49,13 @@ class game {
     //update time passed
 
     this.intervalTime = setInterval(() => {
-      console.log(this.time++);
+      this.time++;
+      this.levelUp();
+      if (this.endLevel) {
+        this.clear();
+        this.level++;
+        this.endLevel = false;
+      }
     }, 1000);
   }
   clear() {
@@ -64,10 +71,8 @@ class game {
 
       if (!this.pause) {
         clearInterval(this.intervalTime);
-        console.log("cleared");
       } else {
         this.startTime();
-        console.log("starting new one");
       }
     } else {
       alert("No pauses available");
@@ -112,6 +117,14 @@ class game {
         : this.wrongPair(this.pairToCompare[0], this.pairToCompare[1]);
     }
     return;
+  }
+  levelUp() {
+    let cards = document.querySelectorAll(".card-container:not(.right-pair)");
+    if (cards.length === 0) {
+      this.clear();
+      this.endLevel = true;
+      window.location.href = "#levelUp";
+    }
   }
 }
 
