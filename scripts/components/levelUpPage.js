@@ -1,15 +1,29 @@
+import { arrow } from "./arrow.js";
+
 export const levelUpPage = () => {
   const container = document.createElement("div");
 
-  const title = document.createElement("h2");
-  const startButton = document.createElement("a");
+  const img = new Image();
+  img.src = "./assets/levelUp.png ";
 
-    startButton.href = "#game";
-  startButton.innerText = "Continue";
+  const continueContainer = document.createElement("a");
+  const continueButton = document.createElement("span");
 
-  title.innerText = "Level up Page";
-  container.appendChild(title);
-  container.appendChild(startButton);
+  const arrows = arrow();
+
+  continueContainer.href = "#game";
+  continueButton.innerText = "Continue";
+
+  img.classList.add("img-levelUp");
+  continueButton.classList.add("button-continue");
+
+  continueContainer.appendChild(continueButton);
+  continueContainer.appendChild(arrows);
+
+  continueContainer.classList.add("flex", "container-continue");
+
+  container.appendChild(img);
+  container.appendChild(continueContainer);
 
   return container;
 };

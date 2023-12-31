@@ -4,3 +4,4 @@ export * from "./homePage.js";
 export * from "./levelUpPage.js";
 export * from "./timer.js";
 export * from "./homepageCard.js";
+export * from "./arrow.js";
