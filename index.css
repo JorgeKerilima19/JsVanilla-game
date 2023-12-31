@@ -5,46 +5,105 @@
   margin: 0;
   box-sizing: border-box;
 }
+:root {
+  --bg-color-1: rgb(255, 0, 0);
+  --bg-color-2: rgb(233, 233, 233);
+}
+img {
+  width: 100%;
+}
 main {
-  background: url("./assets/bg2.jpg") fixed center;
-  background-repeat: no-repeat;
-  background-size: cover;
   min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-}
-main::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.39);
-  top: 0;
-  left: 0;
-  z-index: 1;
-  position: absolute;
-}
-main > * {
-  z-index: 100;
+  background: linear-gradient(
+    135deg,
+    var(--bg-color-2) 55%,
+    var(--bg-color-1) 45%
+  );
 }
 .root {
-  height: 90vh;
+  height: 95vh;
   width: 90%;
 }
 .root > div {
-  color: white;
   display: flex;
-  flex-direction: column;
   width: 100%;
   height: 100%;
   align-items: center;
-  justify-content: center;
-  background-color: rgb(17, 17, 17);
-  border-radius: 1rem;
+  justify-content: space-between;
+  background: linear-gradient(45deg, var(--bg-color-2) 50%, transparent 50%);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.logo-container {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  align-items: center;
+  width: min(30rem, 90%);
+}
+.cards-container {
+  display: flex;
+  gap: 1rem;
+  width: min(30rem, 90%);
+  position: relative;
+  height: 90%;
+}
+.homepage-card {
+  height: 20rem;
+  width: 15rem;
+  position: absolute;
+  background-color: white;
+  border: 0.2rem solid rgb(255, 0, 0);
+  border-radius: 0.5rem;
+  display: grid;
+  place-items: center;
+}
+.homepage-card > img {
+  width: 50%;
+}
+.homepage-card-3 {
+  height: 22rem;
+  width: 17rem;
+  bottom: 0;
+}
+.homepage-card-2 {
+  height: 18rem;
+  width: 13rem;
+  top: 25%;
+  right: 50%;
+  transform: translate(75%, 0);
+}
+.homepage-card-1 {
+  height: 15rem;
+  width: 11rem;
+  top: 0;
+  right: 0;
 }
 
+.button {
+  padding: 0.5rem 1rem;
+  background-color: rgb(255, 0, 0);
+  border-radius: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  border: 0.2rem solid transparent;
+  transition: 0.2s ease;
+}
+.button:visited {
+  color: white;
+}
+.button:hover {
+  color: rgb(255, 0, 0);
+  background-color: white;
+  border-color: rgb(255, 0, 0);
+}
 .table {
   width: 100%;
   display: grid;
