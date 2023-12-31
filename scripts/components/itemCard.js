@@ -1,5 +1,7 @@
 import newGame from "../gameClass.js";
 
+let index = 0;
+
 const itemCard = (backContent) => {
   const container = document.createElement("article");
 
@@ -8,7 +10,10 @@ const itemCard = (backContent) => {
 
   //classes
 
-  container.classList.add("card-container");
+  container.classList.add(
+    "card-container",
+    `${index % 2 === 0 ? "even" : "odd"}`
+  );
   cardFront.classList.add("card-front");
   cardBack.classList.add("card-back");
 
@@ -20,6 +25,8 @@ const itemCard = (backContent) => {
   container.addEventListener("click", () => {
     newGame.compareCards(container);
   });
+
+  index++;
 
   return container;
 };

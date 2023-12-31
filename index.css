@@ -57,8 +57,8 @@ main {
   height: 20rem;
   width: 15rem;
   position: absolute;
-  background-color: white;
-  border: 0.2rem solid rgb(255, 0, 0);
+  background-color: var(--bg-color-2);
+  border: 0.2rem solid var(--bg-color-1);
   border-radius: 0.5rem;
   display: grid;
   place-items: center;
@@ -87,30 +87,34 @@ main {
 
 .button {
   padding: 0.5rem 1rem;
-  background-color: rgb(255, 0, 0);
+  background-color: var(--bg-color-1);
   border-radius: 0.3rem;
   font-size: 1.2rem;
   font-weight: 600;
   text-decoration: none;
-  color: white;
+  color: var(--bg-color-2);
   border: 0.2rem solid transparent;
   transition: 0.2s ease;
 }
 .button:visited {
-  color: white;
+  color: var(--bg-color-2);
 }
 .button:hover {
-  color: rgb(255, 0, 0);
-  background-color: white;
-  border-color: rgb(255, 0, 0);
+  color: var(--bg-color-1);
+  background-color: var(--bg-color-2);
+  border-color: var(--bg-color-1);
 }
 .table {
   width: 100%;
-  display: grid;
-  place-content: center;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, 8rem);
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.089);
 }
 .card-container {
   height: 8rem;
@@ -119,12 +123,19 @@ main {
   transform-style: preserve-3d;
   transition: 0.3s;
   background: linear-gradient(
-    180deg,
-    rgb(255, 123, 16) 0%,
-    rgb(175, 34, 34) 100%
+    45deg,
+    var(--bg-color-1) 50%,
+    var(--bg-color-2) 50%
   );
   transform: rotateY(180deg);
   border-radius: 0.5rem;
+}
+.card-container.odd {
+  background: linear-gradient(
+    135deg,
+    var(--bg-color-2) 50%,
+    var(--bg-color-1) 50%
+  );
 }
 .card-container.forwards {
   transform: rotateY(0deg);
@@ -140,7 +151,7 @@ main {
   font-size: 4em;
   display: grid;
   place-items: center;
-  background-color: white;
+  background-color: var(--bg-color-2);
   position: absolute;
   backface-visibility: hidden;
   height: 100%;
