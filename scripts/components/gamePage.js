@@ -14,15 +14,18 @@ export const gamePage = () => {
 
   backToMenu.innerText = "Go Back";
 
-  //classes
-
   table.classList.add("table");
 
   const button = timer(newGame.minutes);
 
-  container.appendChild(table);
+  //classes
+
+  backToMenu.classList.add("button");
+  button.classList.add("time-button");
+
   container.appendChild(backToMenu);
   container.appendChild(button);
+  container.appendChild(table);
 
   return container;
 };
