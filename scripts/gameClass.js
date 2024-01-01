@@ -22,15 +22,24 @@ class game {
   drawTable() {
     //get the table to draw on
     this.updateLevel();
+    this.shuffleCards();
 
     this.table = document.getElementById("table");
 
     //draw the card item
-    this.startArray.flat().forEach((el) => {
+    this.startArray.forEach((el) => {
       const item = itemCard(el);
 
       this.table.appendChild(item);
     });
+  }
+  shuffleCards() {
+    const suffledArray = this.startArray.flat().sort(() => {
+      return Math.random() - 0.5;
+    });
+
+    this.startArray = suffledArray;
+    console.log(this.startArray);
   }
   updateLevel() {
     //generate new array for each level
