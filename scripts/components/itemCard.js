@@ -23,6 +23,9 @@ const itemCard = (backContent) => {
   container.appendChild(cardBack);
 
   container.addEventListener("click", () => {
+    if (newGame.pairToCompare.includes(container)) {
+      return;
+    }
     newGame.compareCards(container);
   });
 

@@ -39,7 +39,6 @@ class game {
     });
 
     this.startArray = suffledArray;
-    console.log(this.startArray);
   }
   updateLevel() {
     //generate new array for each level
