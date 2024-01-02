@@ -23,11 +23,8 @@ main {
   align-items: center;
   justify-content: center;
   position: relative;
-  background: linear-gradient(
-    135deg,
-    var(--bg-color-2) 55%,
-    var(--bg-color-1) 45%
-  );
+  background: url("./assets/bg.png") fixed no-repeat center;
+  background-size: cover;
 }
 .root {
   height: 95vh;
@@ -42,7 +39,6 @@ main {
   height: 100%;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(45deg, var(--bg-color-2) 50%, transparent 50%);
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -64,7 +60,7 @@ main {
   height: 20rem;
   width: 15rem;
   position: absolute;
-  background-color: var(--bg-color-2);
+  background-color: rgb(255, 255, 255);
   border: 0.2rem solid var(--bg-color-1);
   border-radius: 0.5rem;
   display: grid;
@@ -111,8 +107,9 @@ main {
   background-color: var(--bg-color-2);
   border-color: var(--bg-color-1);
 }
-.time-button{
-  background-color: var(--bg-color-2);
+.time-button {
+  background-color: var(--bg-color-1);
+  color: var(--bg-color-2);
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
 }
@@ -179,8 +176,8 @@ main {
   width: min(80%, 20rem);
 }
 .button-continue {
-  background-color: var(--bg-color-2);
-  color: var(--bg-color-1);
+  background-color: var(--bg-color-1);
+  color: var(--bg-color-2);
   padding: 0.5rem 1rem;
   border-radius: 1rem;
 }

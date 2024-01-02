@@ -16,8 +16,15 @@ export const timer = () => {
   function updateTime() {
     const time = newGame.getPassTime();
 
-    if (time > 60) {
-      minutes++;
+    //set inital time correctly
+
+    if (time < 60) {
+      seconds = time + 1;
+    }
+
+    //print the correct time on the page
+    if (seconds > 59) {
+      minutes = minutes + 1;
       seconds = 0;
     }
     if (minutes < 10) {
@@ -28,6 +35,8 @@ export const timer = () => {
     } else {
       secondsHand.innerText = seconds;
     }
+
+    //increase seconds
     seconds++;
   }
 
