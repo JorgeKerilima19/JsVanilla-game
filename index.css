@@ -9,6 +9,9 @@
   --bg-color-1: rgb(255, 0, 0);
   --bg-color-2: rgb(233, 233, 233);
 }
+html {
+  font-size: clamp(1rem, 1.1vw, 1.4rem);
+}
 img {
   width: 100%;
 }
@@ -209,5 +212,43 @@ main {
   }
   to {
     transform: translateX(0.5rem);
+  }
+}
+@media (max-width: 1000px) {
+  .root {
+    margin: auto;
+  }
+  .root > div {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  :root {
+    --home-card-height: clamp(10rem, 45%, 15rem);
+    --home-card-width: clamp(8rem, 25%, 10rem);
+  }
+  .homepage-card-3 {
+    height: var(--home-card-height);
+    width: var(--home-card-width);
+    top: 50%;
+    right: 50%;
+    transform: translate(10%, -50%);
+    rotate: -20deg;
+    z-index: 0;
+  }
+  .homepage-card-2 {
+    height: var(--home-card-height);
+    width: var(--home-card-width);
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    z-index: 1;
+  }
+  .homepage-card-1 {
+    height: var(--home-card-height);
+    width: var(--home-card-width);
+    top: 50%;
+    left: 50%;
+    transform: translate(-10%, -50%);
+    rotate: 20deg;
   }
 }

@@ -21,6 +21,8 @@ export const levelUpPage = () => {
   leftContainer.appendChild(img);
   leftContainer.appendChild(timeSpent);
 
+  leftContainer.classList.add("logo-container")
+
   //Right container
 
   const rightContainer = document.createElement("a");
