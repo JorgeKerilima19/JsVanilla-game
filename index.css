@@ -11,6 +11,7 @@
 }
 html {
   font-size: clamp(1rem, 1.1vw, 1.4rem);
+  font-family: "Victor Mono", monospace;
 }
 img {
   width: 100%;
@@ -35,6 +36,9 @@ main {
 }
 .flex {
   display: flex;
+}
+.text-center {
+  text-align: center;
 }
 .root > div {
   display: flex;

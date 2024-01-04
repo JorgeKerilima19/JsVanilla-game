@@ -25,6 +25,7 @@ export const levelUpPage = () => {
   leftContainer.appendChild(timeSpent);
   leftContainer.appendChild(records);
 
+  timeSpent.classList.add("text-center");
   leftContainer.classList.add("logo-container");
 
   //Right container
