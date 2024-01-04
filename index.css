@@ -30,8 +30,8 @@ main {
   background-size: cover;
 }
 .root {
-  height: 95vh;
-  width: 90%;
+  height: min(95vh, 55rem);
+  width: min(90%, 80rem);
 }
 .flex {
   display: flex;
