@@ -23,6 +23,7 @@ class game {
     this.pause = false;
     this.totalPauses = 0;
     this.endLevel = false;
+    this.records = {};
   }
 
   drawTable() {
@@ -134,11 +135,20 @@ class game {
   }
   levelUp() {
     let cards = document.querySelectorAll(".card-container:not(.right-pair)");
+
+    //is any pair left?
     if (cards.length === 0) {
+      //kepp the best time
+      this.records = { ...this.records, [`level-${this.level}`]: this.time };
+
+      //clear time interval
       this.clear();
       this.endLevel = true;
       window.location.href = "#levelUp";
     }
+  }
+  getRecords() {
+    return this.records;
   }
 }
 
