@@ -1,4 +1,6 @@
 import itemCard from "./components/itemCard.js";
+import audioPlayer from "./audioClass.js";
+
 const itemArray = [
   ["💖", "🌹"],
   ["😎", "🎶"],
@@ -56,6 +58,7 @@ class game {
   startGame() {
     this.drawTable();
     this.startTime();
+    audioPlayer.bgMusicStart();
   }
   getPassTime() {
     return this.time;
@@ -97,6 +100,7 @@ class game {
     //add blocking events class
 
     setTimeout(() => {
+      audioPlayer.pairSound();
       card1.classList.add("right-pair");
       card2.classList.add("right-pair");
     }, 500);
@@ -110,6 +114,7 @@ class game {
     setTimeout(() => {
       card1.classList.remove("forwards");
       card2.classList.remove("forwards");
+      audioPlayer.wrongSound();
     }, 500);
     this.pairToCompare = [];
     return;
@@ -143,6 +148,7 @@ class game {
 
       //clear time interval
       this.clear();
+      audioPlayer.bgMusicLevelUp();
       this.endLevel = true;
       window.location.href = "#levelUp";
     }

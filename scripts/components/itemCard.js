@@ -1,3 +1,4 @@
+import audioPlayer from "../audioClass.js";
 import newGame from "../gameClass.js";
 
 let index = 0;
@@ -26,6 +27,8 @@ const itemCard = (backContent) => {
     if (newGame.pairToCompare.includes(container)) {
       return;
     }
+    audioPlayer.pickSound();
+
     newGame.compareCards(container);
   });
 
