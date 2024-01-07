@@ -1,9 +1,12 @@
 import { homePageCard } from "./homepageCard.js";
+import audioPlayer from "../audioClass.js";
 
 export const homePage = () => {
   const container = document.createElement("div");
   const logoContainer = document.createElement("div");
   const cardsContainer = document.createElement("div");
+
+  audioPlayer.bgMusicPause();
 
   //logo + left container
   const logo = new Image();

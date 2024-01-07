@@ -5,3 +5,4 @@ export * from "./levelUpPage.js";
 export * from "./timer.js";
 export * from "./homepageCard.js";
 export * from "./arrow.js";
+export * from "./controls.js";
