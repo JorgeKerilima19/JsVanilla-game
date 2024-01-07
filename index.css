@@ -8,8 +8,6 @@
 :root {
   --bg-color-1: rgb(255, 0, 0);
   --bg-color-2: rgb(233, 233, 233);
-  --home-card-height: max(10vh, 13rem);
-  --home-card-width: 9rem;
 }
 html {
   font-size: clamp(1rem, 1.1vw, 1.4rem);
@@ -64,8 +62,8 @@ main {
   align-items: center;
 }
 .homepage-card {
-  height: 15em;
-  width: 12em;
+  height: 15rem;
+  width: 12rem;
   position: relative;
   background-color: rgb(255, 255, 255);
   border: 0.2rem solid var(--bg-color-1);
@@ -74,10 +72,10 @@ main {
   place-items: center;
 }
 .homepage-card > img {
-  width: 50%;
+  width: 65%;
 }
 .homepage-card-3 {
-  transform: rotate(10deg) translate(-1rem, 1rem);
+  transform: rotate(5deg) translate(-1.5rem, 1rem);
   z-index: 0;
 }
 .homepage-card-2 {
@@ -269,6 +267,9 @@ main {
 @media (max-width: 500px) {
   .table {
     padding: 1rem 0.3rem;
+  }
+  .homepage-card {
+    height: 12rem;
   }
   .card-container {
     width: 4.5rem;
