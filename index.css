@@ -102,6 +102,27 @@ main {
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+.controls-mute,
+.controls-mute label {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+}
+.controls-mute {
+  position: relative;
+}
+.controls-mute input {
+  position: absolute;
+  opacity: 0;
+}
+.controls-mute label {
+  background-color: var(--bg-color-1);
+}
+.controls-mute input:checked + label {
+  background-color: rgba(255, 0, 0, 0.521);
+}
 
 .button {
   padding: 0.5rem 1rem;
